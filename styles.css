@@ -1,0 +1,399 @@
+:root {
+  --bg: #0f1720;
+  --bg-soft: #172230;
+  --panel: rgba(255, 255, 255, 0.08);
+  --panel-strong: rgba(255, 255, 255, 0.12);
+  --text: #f5f7fb;
+  --muted: rgba(245, 247, 251, 0.74);
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #f6b84e;
+  --accent-2: #6ee7d8;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(110, 231, 216, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(246, 184, 78, 0.16), transparent 28%),
+    linear-gradient(180deg, #091018 0%, #111a26 48%, #0a1119 100%);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.backdrop {
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  filter: blur(70px);
+  opacity: 0.55;
+}
+
+.backdrop-a {
+  width: 28rem;
+  height: 28rem;
+  top: -6rem;
+  right: -8rem;
+  background: rgba(246, 184, 78, 0.14);
+}
+
+.backdrop-b {
+  width: 30rem;
+  height: 30rem;
+  left: -10rem;
+  top: 28rem;
+  background: rgba(110, 231, 216, 0.12);
+}
+
+.site-header,
+main {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(20px);
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-mark {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(246, 184, 78, 0.95), rgba(110, 231, 216, 0.95));
+  color: #071018;
+  font-weight: 800;
+}
+
+.eyebrow,
+.kicker,
+.strip-label,
+.card-label,
+.contact-label,
+.panel-title {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.brand-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.cert-text a:hover,
+.button:hover {
+  opacity: 0.88;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 2rem;
+  padding: 3.5rem 0 2rem;
+}
+
+.hero h1,
+.section-heading h2,
+.contact-copy h2 {
+  font-family: "Cormorant Garamond", serif;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 8vw, 6.2rem);
+  max-width: 10ch;
+}
+
+.lede,
+.strip p,
+.service-card p,
+.panel p,
+.contact-copy p,
+.cert-card p,
+.contact-note {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.lede {
+  font-size: 1.05rem;
+  max-width: 62ch;
+  margin: 1.2rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), #ffd98c);
+  color: #111827;
+  border-color: transparent;
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.metric,
+.hero-card,
+.service-card,
+.panel,
+.cert-card,
+.contact-card,
+.strip {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.metric {
+  border-radius: 1.2rem;
+  padding: 1rem;
+}
+
+.metric strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hero-card {
+  border-radius: 1.8rem;
+  overflow: hidden;
+}
+
+.portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.portrait-copy {
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+
+.strip {
+  margin-top: 1.5rem;
+  border-radius: 1.6rem;
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.content-section,
+.contact-section {
+  padding: 4rem 0 0;
+}
+
+.section-heading {
+  margin-bottom: 1.35rem;
+}
+
+.section-heading h2,
+.contact-copy h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  max-width: 14ch;
+}
+
+.service-grid,
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.service-card,
+.panel,
+.cert-card,
+.contact-card {
+  border-radius: 1.35rem;
+  padding: 1.25rem;
+}
+
+.service-card h3,
+.cert-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+}
+
+.accent-panel {
+  background: linear-gradient(180deg, rgba(246, 184, 78, 0.16), rgba(255, 255, 255, 0.06));
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.checklist li::before {
+  content: "•";
+  color: var(--accent-2);
+  margin-right: 0.6rem;
+}
+
+.cert-grid {
+  align-items: stretch;
+}
+
+.cert-card {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.cert-card img {
+  width: 100%;
+  max-width: 240px;
+  border-radius: 0.85rem;
+}
+
+.cert-text a {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1rem;
+  padding-bottom: 4rem;
+}
+
+.contact-card .button {
+  margin-top: 1rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.contact-note {
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .strip,
+  .service-grid,
+  .cert-grid,
+  .split-grid,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    max-width: none;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header,
+  main {
+    width: min(100% - 1rem, 1120px);
+  }
+
+  .hero {
+    padding-top: 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+}
