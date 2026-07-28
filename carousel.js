@@ -19,7 +19,10 @@
       return 3;
     };
 
-    const pageCount = () => Math.max(1, slides.length - visibleSlides() + 1);
+    const pageCount = () => {
+      if (isReviews) return slides.length;
+      return Math.max(1, slides.length - visibleSlides() + 1);
+    };
 
     const renderDots = () => {
       dots.innerHTML = '';
@@ -40,10 +43,14 @@
 
     const render = () => {
       current = Math.min(current, pageCount() - 1);
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      const gap = parseFloat(getComputedStyle(slides[0]).marginRight);
-      track.style.transform = `translateX(-${current * (slideWidth + gap)}px)`;
-      const featuredIndex = current + (visibleSlides() === 1 ? 0 : 1);
+      const slideWidth = slides[0].offsetWidth;
+      const gap = parseFloat(getComputedStyle(track).gap) || parseFloat(getComputedStyle(slides[0]).marginRight) || 0;
+      const viewportStyle = getComputedStyle(viewport);
+      const viewportWidth = viewport.clientWidth - parseFloat(viewportStyle.paddingLeft) - parseFloat(viewportStyle.paddingRight);
+      const centerOffset = isReviews && visibleSlides() > 1 ? (viewportWidth - slideWidth) / 2 : 0;
+      const offset = current * (slideWidth + gap);
+      track.style.transform = `translateX(${centerOffset - offset}px)`;
+      const featuredIndex = isReviews ? current : current + (visibleSlides() === 1 ? 0 : 1);
       slides.forEach((slide, index) => slide.classList.toggle('is-featured', isReviews && index === featuredIndex));
       [...dots.children].forEach((dot, index) => dot.setAttribute('aria-current', index === current ? 'true' : 'false'));
     };
