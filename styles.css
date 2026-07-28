@@ -56,27 +56,33 @@ main,
 .brand {
     display: flex;
     align-items: center;
-    gap: .7rem;
+    position: relative;
+    width: min(19rem, 65vw);
+    height: 3.5rem;
     color: var(--navy)
 }
 
-.brand-mark {
-    display: grid;
-    place-items: center;
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: .7rem;
-    background: var(--navy);
-    color: white;
-    font-size: .82rem;
-    font-weight: 700;
-    letter-spacing: .04em
+.brand:before {
+    width: 100%;
+    height: 100%;
+    background: url("./assets/images/manalang-accounting-services-logo.png") left center/contain no-repeat;
+    content: ""
 }
 
-.brand strong,
-.brand small {
-    display: block;
-    line-height: 1.1
+.brand-mark {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+.brand>span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
 }
 
 .brand strong {
