@@ -12,14 +12,8 @@
     let current = 0;
     let timer;
 
-    if (isReviews) {
-      slides.forEach((slide) => {
-        slide.style.flex = '0 0 100%';
-      });
-    }
-
     const visibleSlides = () => {
-      if (isReviews) return 1;
+      if (isReviews) return window.innerWidth <= 800 ? 1 : 3;
       if (window.innerWidth <= 520) return 1;
       if (window.innerWidth <= 800) return 2;
       return 3;
@@ -47,8 +41,10 @@
     const render = () => {
       current = Math.min(current, pageCount() - 1);
       const slideWidth = slides[0].getBoundingClientRect().width;
-      const gap = isReviews ? 0 : parseFloat(getComputedStyle(slides[0]).marginRight);
+      const gap = parseFloat(getComputedStyle(slides[0]).marginRight);
       track.style.transform = `translateX(-${current * (slideWidth + gap)}px)`;
+      const featuredIndex = current + (visibleSlides() === 1 ? 0 : 1);
+      slides.forEach((slide, index) => slide.classList.toggle('is-featured', isReviews && index === featuredIndex));
       [...dots.children].forEach((dot, index) => dot.setAttribute('aria-current', index === current ? 'true' : 'false'));
     };
 
