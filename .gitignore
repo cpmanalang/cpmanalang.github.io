@@ -1,0 +1,33 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Dependency folders created by package managers
+node_modules/
+bower_components/
+
+# Generated website output and temporary build files
+dist/
+build/
+.cache/
+.parcel-cache/
+.astro/
+.next/
+
+# Test and coverage output
+coverage/
+
+# Local environment and secret configuration files
+.env
+.env.*
+!.env.example
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
